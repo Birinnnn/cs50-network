@@ -1,0 +1,27 @@
+{% extends "network/layout.html" %}
+
+
+{% load static %}
+
+{% block script %}
+    <script src="{% static 'network/index.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+    <h1>{{ username }}</h1>
+    <button class="btn btn-primary">Following: {{ following }}</button>
+    {% if user.is_authenticated and not isOwner %}
+    <button type="submit" class="btn btn-primary follow-button" data-user-id="{{username.id}}" data-follow-url="{% url 'follow' username.id %}">
+        <span class="follow-button-text">{% if isFollowing %} Unfollow {% else %} Follow {% endif %}</span>
+        <span class="follow-count">{{ followers }}</span>
+    </button>
+    {% endif %}
+    <h1>Posts</h1>
+    {% for post in posts %}
+        {% include 'network/includes/post.html'%}
+    {% endfor %}
+{% endblock %}
+
+{% block pagination %}
+    {% include 'network/includes/pagination.html'%}
+{% endblock %}

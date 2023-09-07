@@ -1,0 +1,11 @@
+<ul style="margin-left: 10px;" class="pagination">
+    {% if page_obj.has_previous %}
+    <li><a href="?page=1">&laquo;First</a></li>
+    <li><a href="?page={{ page_obj.previous_page_number}}">&laquo;Previous</a></li>
+    {% endif %}
+
+    {% if page_obj.has_next %}
+    <li><a href="?page={{ page_obj.next_page_number}}">Next&raquo;</a></li>
+    <li><a href="?page={{ page_obj.paginator.num_pages}}">Last&raquo;</a></li>
+    {% endif %}
+</ul>

@@ -1,0 +1,18 @@
+{% extends "network/layout.html" %}
+
+{% load static %}
+
+{% block script %}
+    <script src="{% static 'network/index.js' %}"></script>
+{% endblock %}
+
+{% block body %}
+    <h1>Posts of people you follow</h1>
+    {% for post in posts %}
+        {% include 'network/includes/post.html'%}
+    {% endfor %}
+{% endblock %}
+
+{% block pagination %}
+    {% include 'network/includes/pagination.html'%}
+{% endblock %}
